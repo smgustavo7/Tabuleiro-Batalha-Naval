@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+//Definindo as matrizes
+
 int main(){
 
     char linha[10] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'};
