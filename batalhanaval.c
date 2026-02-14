@@ -14,18 +14,32 @@ int main(){
     }
 
 //Navio horizontal
-//Linha 2, colunas 3, 4, 5
+//Linha 2 & Colunas 3, 4, 5
 
     tabuleiro[1][2] = 3;
     tabuleiro[1][3] = 3;
     tabuleiro[1][4] = 3;
 
 //Navio vertical
-//Coluna 7, linhas 5, 6, 7
+//Coluna 7 & Linhas 5, 6, 7
 
     tabuleiro[4][6] = 3;
     tabuleiro[5][6] = 3;
     tabuleiro[6][6] = 3;
+
+//Navio diagonal
+//Colunas 2, 3, 4 & Linhas 4, 5, 6
+
+    tabuleiro[3][3] = 3;
+    tabuleiro[4][2] = 3;
+    tabuleiro[5][1] = 3;
+
+//Navio diagonal
+//Colunas 4, 5, 6 & Linhas 8, 9, 10
+
+    tabuleiro[7][3] = 3;
+    tabuleiro[8][4] = 3;
+    tabuleiro[9][5] = 3;
 
 //Imprimir letras (A-J)
 
