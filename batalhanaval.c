@@ -44,6 +44,7 @@ int main(){
                 octaedro[i][j] = 1;
         } else {
                 octaedro[i][j] = 0;
+            }
         }
     }
 
@@ -61,8 +62,8 @@ int main(){
 
 //Posição no tabuleiro
 
-    int origemlinha = 4;
-    int origemcoluna = 5;
+    int origemlinha = 2;
+    int origemcoluna = 7;
 
     for (int i = 0; i < TAM; i++){
         for (int j = 0; j < TAM; j++){
@@ -76,9 +77,74 @@ int main(){
                 if ( cruz[i][j] == 1){
                     tabuleiro[linhatab][colunatab] = 5;
                 }
-                }
+            }
         }
     }
+
+    int origemOctLinha = 6;
+    int origemOctColuna = 2;
+
+    for (int i = 0; i < TAM; i++){
+        for (int j = 0; j < TAM; j++){
+
+            int linhatab = origemOctLinha + (i - centro);
+            int colunatab = origemOctColuna + (j - centro);
+
+            if (linhatab >= 0 && linhatab < 10 &&
+            colunatab >= 0 && colunatab < 10){
+
+                if (octaedro[i][j] == 1){
+                tabuleiro[linhatab][colunatab] = 2; // número diferente
+                }
+            }
+        }
+    }
+
+    int origemConeLinha = 7;
+    int origemConeColuna = 7;
+
+    for (int i = 0; i < TAM; i++){
+        for (int j = 0; j < TAM; j++){
+
+            int linhatab = origemConeLinha + (i - centro);
+            int colunatab = origemConeColuna + (j - centro);
+
+            if (linhatab >= 0 && linhatab < 10 &&
+            colunatab >= 0 && colunatab < 10){
+
+                if (cone[i][j] == 1){
+                tabuleiro[linhatab][colunatab] = 1; // outro número
+                }
+             }
+        }
+    }
+
+//Posicionando Navio Vertical
+//Coluna B & Linhas 2, 3, 4
+
+    tabuleiro[1][1] = 3;
+    tabuleiro[2][1] = 3;
+    tabuleiro[3][1] = 3;
+
+//Posicionando Navio Horizontal
+//Colunas D, E, F & Linha 1
+
+    tabuleiro[0][3] = 3;
+    tabuleiro[0][4] = 3;
+    tabuleiro[0][5] = 3;
+
+//Posicionando Navio Diagonal
+//Colunas E, F, G & Linhas 4, 5, 6
+
+    tabuleiro[5][6] = 3;
+    tabuleiro[4][5] = 3;
+    tabuleiro[3][4] = 3;
+
+//Colunas C, D, E & Linhas 8, 9, 10
+
+    tabuleiro[9][2] = 3;
+    tabuleiro[8][3] = 3;
+    tabuleiro[7][4] = 3;
 
 //Imprimir letras (A-J)
 
