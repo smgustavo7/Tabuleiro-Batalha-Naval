@@ -1,11 +1,20 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 //Definindo as matrizes
+
+#define TAM 5
 
 int main(){
 
     char linha[10] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'};
     int tabuleiro[10][10];
+
+    int cruz[TAM][TAM];
+    int cone[TAM][TAM];
+    int octaedro[TAM][TAM];
+
+    int centro = TAM / 2;
 
 //Preencher o tabuleiro com 0
 
@@ -15,33 +24,61 @@ int main(){
          }
     }
 
-//Navio horizontal
-//Linha 2 & Colunas 3, 4, 5
+//Construindo Cruz
 
-    tabuleiro[1][2] = 3;
-    tabuleiro[1][3] = 3;
-    tabuleiro[1][4] = 3;
+    for (int i = 0; i < TAM; i++){
+        for (int j = 0; j < TAM; j++){
+            if (i == centro || j == centro){
+                cruz[i][j] = 1;
+        } else {
+            cruz[i][j] = 0;
+        }
+      }
+    }
 
-//Navio vertical
-//Coluna 7 & Linhas 5, 6, 7
+//Construindo Octaedro
 
-    tabuleiro[4][6] = 3;
-    tabuleiro[5][6] = 3;
-    tabuleiro[6][6] = 3;
+    for (int i = 0; i < TAM; i++){
+        for (int j = 0; j < TAM; j++){
+            if (abs(i - centro) + abs(j - centro) <= centro){
+                octaedro[i][j] = 1;
+        } else {
+                octaedro[i][j] = 0;
+        }
+    }
 
-//Navio diagonal
-//Colunas 2, 3, 4 & Linhas 4, 5, 6
+//Construindo Cone
 
-    tabuleiro[3][3] = 3;
-    tabuleiro[4][2] = 3;
-    tabuleiro[5][1] = 3;
+    for (int i = 0; i < TAM; i++){
+        for (int j = 0; j < TAM; j++){
+            if (i <= centro && j >= centro - i && j <= centro + i){
+                cone[i][j] = 1;
+            } else {
+                cone[i][j] = 0;
+            }
+        }
+    }
 
-//Navio diagonal
-//Colunas 4, 5, 6 & Linhas 8, 9, 10
+//Posição no tabuleiro
 
-    tabuleiro[7][3] = 3;
-    tabuleiro[8][4] = 3;
-    tabuleiro[9][5] = 3;
+    int origemlinha = 4;
+    int origemcoluna = 5;
+
+    for (int i = 0; i < TAM; i++){
+        for (int j = 0; j < TAM; j++){
+
+            int linhatab = origemlinha + (i - centro);
+            int colunatab = origemcoluna + (j - centro);
+
+            if (linhatab >= 0 && linhatab < 10 &&
+                colunatab >= 0 && colunatab < 10){
+
+                if ( cruz[i][j] == 1){
+                    tabuleiro[linhatab][colunatab] = 5;
+                }
+                }
+        }
+    }
 
 //Imprimir letras (A-J)
 
